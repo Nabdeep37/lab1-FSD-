@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word Input</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="src/main/resources/static/style.css">
+    <style>
+        body {
+            background: url('image.jpg') repeat-x;
+            background-size: 200% 200%;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            font-family: Arial, sans-serif;
+        }
+
+        @keyframes moveBackground {
+            from {
+                background-position: 0 0, 100% 0;
+            }
+            to {
+                background-position: -100% 0, 0 0;
+            }
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.8); /* Slightly opaque white background for content */
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 50px;
+        }
+        .custom-green {
+            background-color: #28a745; /* Custom green color */
+            color: white;
+            border: none;
+        }
+
+        .custom-green:hover {
+            background-color: #218838; /* Darker shade on hover */
+        }
+
+    </style>
+</head>
+<body>
+<div class="container mt-5">
+    <div class="text-center mb-4">
+        <h2>Start guessing word now....</h2>
+    </div>
+    <form action="/getWord" method="post">
+        <div class="form-group">
+            <p th:text="${GivenHints}" class="hint"></p>
+        </div>
+        <div class="form-group">
+            <label for="word">Decide Your Word:</label>
+            <input type="text" id="word" name="word" class="form-control" required>
+        </div>
+        <div class="d-flex justify-content-between">
+            <button type="submit" class="btn btn-success">Submit Your Guess</button>
+            <a href="/" class="btn custom-green">Replay Game</a>
+        </div>
+    </form>
+    <p th:text="${message}" class="message text-center mt-4"></p>
+</div>
+
+<!-- Bootstrap JS and dependencies -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
